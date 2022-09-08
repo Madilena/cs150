@@ -4,7 +4,7 @@
  * COURSE: CS 150: C++ Programming 1
  * SECTION: 1598
  * NC (PROJECT)#: <#03>
- * LAST MODIFIED: 2022-09-05
+ * LAST MODIFIED: 2022-09-07
  *****************************************************/
  
 /******************************************************
@@ -17,6 +17,11 @@
  * ****************************************************
  * ALGORITHM:
  * Use the cin operator to consume user input.  set the sales tax and tip percentage as a constant.  
+ * Use formula to calculate sales tax and tip tax:
+ *      tax_amount = meal_charge * sales_tax;
+ *      sub_total = meal_charge + tax_amount;
+ *      tip_amount = sub_total * tip_tax;
+ *      total_amount = sub_total + tip_amount;
  *
  * ****************************************************
  * ALL IMPORTED LIBRARIES NEEDED AND PURPOSE:
@@ -50,8 +55,8 @@ int main(int argc, char *argv[])
 	// No intro needed for this program.
 	
 	/***** INPUT SECTION *****/
-	std::cout << "please enter the meal charge: " << std::endl;
-	std::cin >> meal_charge;
+	cout << "please enter the meal charge: $";
+	cin >> meal_charge;
 
 	/***** PROCESSING SECTION *****/
 	tax_amount = meal_charge * sales_tax;

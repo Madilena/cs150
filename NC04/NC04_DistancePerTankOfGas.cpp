@@ -33,13 +33,14 @@ int main(int argc, char *argv[])
 {
 
 	/***** CONSTANT SECTION *****/
-	double city_mpg = 20.4;
-	double highway_mpg = 27.1;
-	double price_per_gallon = 4.49;
-	double gas_tank_capacity = 12;
-
+	// no constants needed in this program.
+	
 	/***** DECLARATION SECTION *****/
 	double city_range;
+	double city_mpg;
+	double highway_mpg;
+	double price_per_gallon;
+	double gas_tank_capacity;
 	double highway_range;
 	double gas_tank_fill_cost;
 
@@ -50,8 +51,15 @@ int main(int argc, char *argv[])
 	cout << "Welcome to the Gasomatic fuel calculator." << endl;
 
 	/***** INPUT SECTION *****/
-	// no input needed for this program.
-	
+	cout << "Gas tank capacity in gallons: ";
+	cin >> gas_tank_capacity;
+	cout << "City mpg:  ";
+	cin >> city_mpg;
+	cout << "Highway mpg: "; 
+	cin >> highway_mpg;
+	cout << "Price per gallon: $";
+	cin >> price_per_gallon;
+
 	/***** PROCESSING SECTION *****/
  	city_range = gas_tank_capacity * city_mpg;
 	highway_range = gas_tank_capacity * highway_mpg;

@@ -52,40 +52,30 @@ int main(int argc, char *argv[])
 	// No intro needed in this program.
 	
 	/***** INPUT SECTION *****/
-	cout << "What is your change amount?";
+	cout << "What is your change amount? $";
 	cin >> dollars >> cents;
 	cout << "Change:" << endl;
 	
 	/***** PROCESSING SECTION *****/
-	// No processing needed in this program.
-	
-	/***** OUTPUT SECTION *****/
-	if (dollars == 20)
+	if (dollars >= 20)
 	{
-		twenty = (dollars/20);
-		dollars = (dollars - (20*twenty));
-		if (twenty > 0) 
-		{
-		cout << "$20 - " << twenty << endl;
-		}
+	cout << "Try Again! We only give change for amounts less than $20!" << endl;
+	return 0;	
 	}
 	if (dollars >= 10)
 	{
 		ten = (dollars/10);
 		dollars = (dollars - (10*ten));
-		cout << "$10 - " << ten << endl;
 	}
 	if (dollars >= 5)
 	{
 		five = (dollars/5);
 		dollars = (dollars - (5*five));
-		cout << "$5 - " << five << endl;
 	}
 	if (dollars >= 1)
 	{
 		one = (dollars/1);
 		dollars = (dollars - (1*one));
-		cout << "$1 - " << one << endl;
 	}
 
 	cents = cents * 100;
@@ -93,26 +83,31 @@ int main(int argc, char *argv[])
 	{
 		quarter = (cents/25);
 		cents = (cents - (25*quarter));
-		cout << "$0.25 - " << quarter << endl;
 	}
 	if (cents >= 10)
 	{
 		dime = (cents/10);
 		cents = (cents - (10*dime));
-		cout << "$0.10 - " << dime << endl;
 	}
 	if (cents >= 5)
 	{
 		nickel = (cents/5);
 		cents = (cents - (5*nickel));
-		cout << "$0.05 - " << nickel << endl;
 	}
 	if (cents >= 1)
 	{
 		penny = (cents/1);
 		cents = (cents - (1*penny));
-		cout << "$0.01 - " << penny << endl;
 	}
+	
+	/***** OUTPUT SECTION *****/
+	cout << "$10 - " << ten << endl;
+	cout << "$5 - " << five << endl;
+	cout << "$1 - " << one << endl;
+	cout << "$0.25 - " << quarter << endl;
+	cout << "$0.10 - " << dime << endl;		
+	cout << "$0.05 - " << nickel << endl;
+	cout << "$0.01 - " << penny << endl;
 
 	return 0;
 }
