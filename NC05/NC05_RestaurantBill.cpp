@@ -50,8 +50,16 @@ int main(int argc, char *argv[])
 	double change;
 	double cents;
 
-	double dollars;
-	int twenty, ten, five, one, quarter, dime, nickel, penny;
+	double double_dollars;
+	int dollars;
+	int twenty=0;
+	int ten=0;
+	int five=0;
+	int one=0;
+	int quarter=0;
+	int dime=0;
+	int nickel=0;
+	int penny=0;
 	
 	/***** INITIALIZATION SECTION *****/
 	// No initialization needed for this program.
@@ -89,9 +97,8 @@ int main(int argc, char *argv[])
 	change = amount_paid - total_amount;
 	cout << "Change:" << change << endl;
 
-	cents = std::modf(change, &dollars);
-	cout << "dollars " << dollars << endl;
-	cout << "cents " << cents << endl;
+	dollars = change;
+	cents = change - dollars;
 	
 	/***** PROCESSING SECTION *****/
 	if (dollars >= 20)
@@ -103,7 +110,7 @@ int main(int argc, char *argv[])
 	{
 		ten = (dollars/10);
 		dollars = (dollars - (10*ten));
-	}
+	}	
 	if (dollars >= 5)
 	{
 		five = (dollars/5);
