@@ -16,6 +16,7 @@
  *
  * ****************************************************
  * ALGORITHM:
+ * get user input regarding food prices. calculate the tax, tip, and total amount using formula for tax and tip. ask the user how much they paid to cover the cost.  return change to the user and what types of bills make that change.
  *
  *
  * ****************************************************
@@ -36,22 +37,22 @@ int main(int argc, char *argv[])
 {
 
 	/***** CONSTANT SECTION *****/
-	const float SALES_TAX = 0.0775;
-	const float TIP_TAX = 0.20;
+	const double SALES_TAX = 0.0775;
+	const double TIP_TAX = 0.2;
 
 	/***** DECLARATION SECTION *****/
 	double item1, item2, item3;
 	double food_total;
 	double total_amount;
-	double sub_total;
-	double tip_amount;
-	double tax_amount;
+	long double sub_total;
+	long double tip_amount;
+	long double tax_amount;
 	double amount_paid;
 	double change;
 	double cents;
-
-	double double_dollars;
 	int dollars;
+
+	/***** INITIALIZATION SECTION *****/
 	int twenty=0;
 	int ten=0;
 	int five=0;
@@ -60,9 +61,6 @@ int main(int argc, char *argv[])
 	int dime=0;
 	int nickel=0;
 	int penny=0;
-	
-	/***** INITIALIZATION SECTION *****/
-	// No initialization needed for this program.
 	
 	/***** INTRO SECTION *****/
 	// no intro needed for this program.
@@ -77,6 +75,7 @@ int main(int argc, char *argv[])
 
 
 	/***** PROCESSING SECTION *****/
+	cout << fixed << setprecision(0);
 	food_total = item1 + item2 + item3;
 	tax_amount = food_total * SALES_TAX;
 	sub_total = food_total + tax_amount;
@@ -84,18 +83,18 @@ int main(int argc, char *argv[])
 	total_amount = sub_total + tip_amount;
 
 
-	/***** OUTPUT SECTION *****/
+	/***** OUTPUT SECTION part 0 *****/
 
 	cout << fixed << setprecision(2);
-	cout << "What was the meal charge $" << food_total << endl;
+	cout << "\nWhat was the meal charge $" << food_total << "\n" << endl;
 	std::cout << "Tax (7.75%): $" << tax_amount << std::endl;
 	std::cout << "Subtotal: $" << sub_total << std::endl;
 	std::cout << "Tip (20%): $" << tip_amount << std::endl;
-	std::cout << "Total: $" << total_amount << std::endl;
+	std::cout << "Total: $" << total_amount << "\n" << std::endl;
 	cout << "What was your amount paid? $";
 	cin >> amount_paid;
 	change = amount_paid - total_amount;
-	cout << "Change:" << change << endl;
+	cout << "Change is $" << change << endl;
 
 	dollars = change;
 	cents = change - dollars;
@@ -103,8 +102,8 @@ int main(int argc, char *argv[])
 	/***** PROCESSING SECTION *****/
 	if (dollars >= 20)
 	{
-	cout << "Try Again! We only give change for amounts less than $20!" << endl;
-	return 0;	
+		twenty = (dollars/20);
+		dollars = (dollars - (20*twenty));
 	}
 	if (dollars >= 10)
 	{
@@ -144,7 +143,7 @@ int main(int argc, char *argv[])
 		cents = (cents - (1*penny));
 	}
 	
-	/***** OUTPUT SECTION *****/
+	/***** OUTPUT SECTION part 1 ****/
 	cout << "$10 - " << ten << endl;
 	cout << "$5 - " << five << endl;
 	cout << "$1 - " << one << endl;

@@ -43,7 +43,6 @@ int main(int argc, char *argv[])
 	/***** DECLARATION SECTION *****/
 	double r; //monthly interest
 	double loan_amount; //our loan amount
-	double n = 36; //length of loan
 	double annual_interest_rate;
 	int number_of_payments;
 
@@ -55,7 +54,7 @@ int main(int argc, char *argv[])
 	double interest_paid;
 
 	/***** INITIALIZATION SECTION *****/
-	// no initializations needed in this program.
+	double n = 36; //length of loan
 	
 	/***** INTRO SECTION *****/
 	// no intro needed in this program.
