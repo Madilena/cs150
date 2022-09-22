@@ -48,9 +48,10 @@ int main(int argc, char *argv[])
 	double male_bmr_calories;
 	double female_bmr_calories;
 	double avg_caloric_needs;
-	int num_of_daily_chocolate_bars;
+	double num_of_daily_chocolate_bars;
 	int activity_level;
 	double bmr_activity_increase;
+	string gender;
 	
 	/***** INITIALIZATION SECTION *****/
 	// no initialization needed for this program.
@@ -59,11 +60,13 @@ int main(int argc, char *argv[])
 	cout << "Welcome to the Basal Metabolic Rate calculator.\n" << endl;
 
 	/***** INPUT SECTION *****/
-	cout << "Your weight in pounds: ";
+	cout << "Enter your gender: " ;
+	cin >> gender;
+	cout << "Enter your weight in pounds: ";
 	cin >> weight;
-	cout << "Your height in inches: ";
+	cout << "Enter your height in inches: ";
 	cin >>  height;
-	cout << "Your age: ";
+	cout << "Enter your age: ";
 	cin >> age;
 	cout << "\nEnter your activity level:\n1. Sedentary (not active)\n2. Somewhat active (exercise occationally)\n3. Active (exercision 3-4 times per week)\n4. Highly Active (exercise every day)\nActivity level? "; 
 	cin >> activity_level;
@@ -87,18 +90,26 @@ int main(int argc, char *argv[])
 
 
 	/***** PROCESSING SECTION *****/
-	female_bmr_calories = 665 + (4.35 * weight) + (4.7 * height) - (4.7 * age); 
-	male_bmr_calories = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * age);	
-	female_bmr_calories = (bmr_activity_increase != 1.0) ? female_bmr_calories + (female_bmr_calories * bmr_activity_increase) : female_bmr_calories;
-	male_bmr_calories = (bmr_activity_increase != 1.0) ? male_bmr_calories + (male_bmr_calories * bmr_activity_increase) : male_bmr_calories;
+	if (gender == "m" || gender == "male"){	
+		male_bmr_calories = 66 + (6.23 * weight) + (12.7 * height) - (6.8 * age);	
+		male_bmr_calories = (bmr_activity_increase != 1.0) ? male_bmr_calories + (male_bmr_calories * bmr_activity_increase) : male_bmr_calories;
+		num_of_daily_chocolate_bars = male_bmr_calories / chocolate_bar_calories;	
+		cout << "To maintain your weight you will need " << male_bmr_calories << " calories" << endl;
+	
+	} else if (gender == "f" || gender == "female"){
+		female_bmr_calories = 665 + (4.35 * weight) + (4.7 * height) - (4.7 * age); 
+		female_bmr_calories = (bmr_activity_increase != 1.0) ? female_bmr_calories + (female_bmr_calories * bmr_activity_increase) : female_bmr_calories;
+		num_of_daily_chocolate_bars = female_bmr_calories / chocolate_bar_calories;	
+		cout << "To maintain your weight you will need " << female_bmr_calories << " calories" << endl;
 
-	avg_caloric_needs = (female_bmr_calories + male_bmr_calories)/2;
-	num_of_daily_chocolate_bars = avg_caloric_needs / chocolate_bar_calories;	
+	} 
+	else {
+		cout << "Please submit only male or female for gender\n";
+		return 1;
+	};
 	
 
 	/***** OUTPUT SECTION *****/
-	cout << "If you are a woman then to maintain your weight you will need " << female_bmr_calories << " calories" << endl;
-	cout << "If you are a man then to maintain your weight you will need " << male_bmr_calories << " calories" << endl;
 	cout << "You should be able to consume about " << num_of_daily_chocolate_bars << " chocolate bars per day. " << endl;
 
 	return 0;

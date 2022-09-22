@@ -4,7 +4,7 @@
  * COURSE: CS 150: C++ Programming 1
  * SECTION: 1598
  * NC (PROJECT)#: <#08>
- * LAST MODIFIED: 2022-09-22
+ * LAST MODIFIED: 2022-09-21
  *****************************************************/
  
 /******************************************************
@@ -62,7 +62,6 @@ int main(int argc, char *argv[])
 		cout << "You drove within the legal speed limit.  No fine! " << endl;
 		return 0;
 	}
-
 	speed_diff = vehicle_speed - speed_limit;
 	mph_speed_fee = speed_diff * ADDITIONAL_SPEED_FEE;
 
