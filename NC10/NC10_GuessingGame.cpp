@@ -67,7 +67,5 @@ int main(int argc, char *argv[])
     if (guess == answer) {
         cout << "Great guess! You found the correct answer in " << count << " guesses." << endl;
     }
-
     return 0;
-
 }

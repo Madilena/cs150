@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
     /***** OUTPUT SECTION *****/
     cout << "How many months would you like to purchase? ";
     cin >> num_of_months ;
-    cout << "Are you a new member? ";
+    cout << "Are you a new member? (y/n) ";
     cin >> new_member ;
 
     if (new_member == "n" || new_member == "no") {

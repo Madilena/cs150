@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
     // no initialization needed
 
     /***** INTRO SECTION *****/
+    cout << "Thank you for choosing Madilena's Awesome Calculator" << endl;
 
     /***** INPUT SECTION *****/
     // no input needed
@@ -71,6 +72,9 @@ int main(int argc, char *argv[])
         result = operand1 / operand2;
     } else if (math_operator == "^") {
         result = pow(operand1, operand2);
+    } else {
+	cout << "invalid operation" << endl;
+	return 1;
     }
     cout << "Your answer is: " << result << endl;
     return 0;
