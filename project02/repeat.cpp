@@ -28,23 +28,14 @@
 #include <iostream>
 
 using namespace std;
-void numberSquare(int min, int max) {
 
-    for (int i = min; i <= max; i++) {
-
-        for (int j = i; j <= max; j++) {
-
-            cout << j;
-        }
-        for (int k = min; k <i; k++) {
-            cout << k;
-        }
-        cout << endl;
+string repeat(string word, int reps) {
+    string rw;
+    for(int i = 0; i < reps; i++) {
+        rw += word;
     }
-
-
+    return rw;
 }
-
 int main(int argc, char *argv[])
 {
 
@@ -55,7 +46,7 @@ int main(int argc, char *argv[])
     /***** INPUT SECTION *****/
     /***** PROCESSING SECTION *****/
     /***** OUTPUT SECTION *****/
-    numberSquare(1, 5);
+    string val = repeat("hello", 3);
+    cout << val << endl;
     return 0;
-
 }

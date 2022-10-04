@@ -1,4 +1,5 @@
 
+
 /****************************************************
  * AUTHOR: Madilena Mendiola
  * COURSE: CS 150: C++ Programming 1
@@ -28,23 +29,24 @@
 #include <iostream>
 
 using namespace std;
-void numberSquare(int min, int max) {
 
-    for (int i = min; i <= max; i++) {
+void nameDiamond(string word) {
+    const int LENGTH = word.length();
 
-        for (int j = i; j <= max; j++) {
-
-            cout << j;
-        }
-        for (int k = min; k <i; k++) {
-            cout << k;
+    for (int i=0; i < LENGTH; i++) {
+        for(int j = 0; j < i+1; j++) {
+            cout << word[j];
         }
         cout << endl;
     }
 
-
+    for (int k=1; k < LENGTH; k++) {
+        for(int l=0; l < k; l++) {
+            cout << " ";
+        }
+        cout << word.substr(k, LENGTH - k) << endl;
+    }
 }
-
 int main(int argc, char *argv[])
 {
 
@@ -55,7 +57,6 @@ int main(int argc, char *argv[])
     /***** INPUT SECTION *****/
     /***** PROCESSING SECTION *****/
     /***** OUTPUT SECTION *****/
-    numberSquare(1, 5);
+    nameDiamond("MARTY");
     return 0;
-
 }

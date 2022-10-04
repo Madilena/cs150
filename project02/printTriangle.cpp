@@ -1,4 +1,5 @@
 
+
 /****************************************************
  * AUTHOR: Madilena Mendiola
  * COURSE: CS 150: C++ Programming 1
@@ -28,21 +29,15 @@
 #include <iostream>
 
 using namespace std;
-void numberSquare(int min, int max) {
+void printTriangle() {
+    const int LENGTH = 6;
 
-    for (int i = min; i <= max; i++) {
-
-        for (int j = i; j <= max; j++) {
-
-            cout << j;
-        }
-        for (int k = min; k <i; k++) {
-            cout << k;
+    for (int i=0; i < LENGTH; i++) {
+        for(int j = 0; j < i+1; j++) {
+            cout << "#";
         }
         cout << endl;
     }
-
-
 }
 
 int main(int argc, char *argv[])
@@ -55,7 +50,7 @@ int main(int argc, char *argv[])
     /***** INPUT SECTION *****/
     /***** PROCESSING SECTION *****/
     /***** OUTPUT SECTION *****/
-    numberSquare(1, 5);
+    printTriangle();
     return 0;
 
 }

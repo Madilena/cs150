@@ -6,9 +6,9 @@
  * NC (PROJECT)#: <#01>
  * LAST MODIFIED: 2022-08-31
  *****************************************************/
-
+ 
 /******************************************************
- * PROJECT NAME
+ * PROJECT NAME 
  *
  * ****************************************************
  * PROGRAM DESCRIPTION:
@@ -28,34 +28,26 @@
 #include <iostream>
 
 using namespace std;
-void numberSquare(int min, int max) {
-
-    for (int i = min; i <= max; i++) {
-
-        for (int j = i; j <= max; j++) {
-
-            cout << j;
-        }
-        for (int k = min; k <i; k++) {
-            cout << k;
-        }
-        cout << endl;
-    }
-
-
+int mystery(int b, int c)
+{
+	return c+2 *b;
 }
-
 int main(int argc, char *argv[])
 {
 
-    /***** CONSTANT SECTION *****/
-    /***** DECLARATION SECTION *****/
-    /***** INITIALIZATION SECTION *****/
-    /***** INTRO SECTION *****/
-    /***** INPUT SECTION *****/
-    /***** PROCESSING SECTION *****/
-    /***** OUTPUT SECTION *****/
-    numberSquare(1, 5);
-    return 0;
+	/***** CONSTANT SECTION *****/
+	/***** DECLARATION SECTION *****/
+	/***** INITIALIZATION SECTION *****/
+	/***** INTRO SECTION *****/
+	/***** INPUT SECTION *****/
+	/***** PROCESSING SECTION *****/
+	/***** OUTPUT SECTION *****/
+	int a = 4;
+	int b = 2;
+	int c = 5;
+	a = mystery(c, b);
+	c = mystery(b, a);
+	cout << a << " " << b << " " << c << endl;
+	return 0;
 
 }

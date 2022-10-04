@@ -28,21 +28,18 @@
 #include <iostream>
 
 using namespace std;
-void numberSquare(int min, int max) {
 
-    for (int i = min; i <= max; i++) {
-
-        for (int j = i; j <= max; j++) {
-
-            cout << j;
+int factorCount(int num) {
+    int count=0;
+    cout << "The factors of " << num << " are : ";
+    for(int i=1; i <= num; i++) {
+        if (num % i == 0) {
+            cout << i << " ";
+            count++;
         }
-        for (int k = min; k <i; k++) {
-            cout << k;
-        }
-        cout << endl;
     }
-
-
+    cout << "count " << count << endl;
+    return count;
 }
 
 int main(int argc, char *argv[])
@@ -55,7 +52,7 @@ int main(int argc, char *argv[])
     /***** INPUT SECTION *****/
     /***** PROCESSING SECTION *****/
     /***** OUTPUT SECTION *****/
-    numberSquare(1, 5);
+    factorCount(24);
     return 0;
 
 }

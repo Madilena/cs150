@@ -28,34 +28,18 @@
 #include <iostream>
 
 using namespace std;
-void numberSquare(int min, int max) {
 
-    for (int i = min; i <= max; i++) {
-
-        for (int j = i; j <= max; j++) {
-
-            cout << j;
-        }
-        for (int k = min; k <i; k++) {
-            cout << k;
-        }
-        cout << endl;
-    }
-
-
+void mystery(string a, string& b) {
+    a.erase(0, 1);
+    b += a[0];
+    b.insert(3, "FOO");
 }
-
 int main(int argc, char *argv[])
 {
-
-    /***** CONSTANT SECTION *****/
-    /***** DECLARATION SECTION *****/
-    /***** INITIALIZATION SECTION *****/
-    /***** INTRO SECTION *****/
-    /***** INPUT SECTION *****/
-    /***** PROCESSING SECTION *****/
-    /***** OUTPUT SECTION *****/
-    numberSquare(1, 5);
+    string a = "marty";
+    string b = "strepp";
+    mystery(a, b);
+    cout << a << " " << b << endl;
     return 0;
 
 }
