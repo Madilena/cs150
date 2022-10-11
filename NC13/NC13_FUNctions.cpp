@@ -4,7 +4,7 @@
  * COURSE: CS 150: C++ Programming 1
  * SECTION: 1598
  * NC (PROJECT)#: <#13>
- * LAST MODIFIED: 2022-08-31
+ * LAST MODIFIED: 2022-10-10
  *****************************************************/
 
 /******************************************************
@@ -23,7 +23,7 @@
  *
  * ****************************************************
  * ALGORITHM:
- *
+ * write functions to read in string. in each funciton have a counter variable. iterate through each character in the string. make a check against the character (is it a vowel? is it a capital? etc.). iterate counter if character meets these checks.
  *
  * ****************************************************
  * ALL IMPORTED LIBRARIES NEEDED AND PURPOSE:
@@ -43,8 +43,6 @@ int countCapitals(string text) {
     for (int i = 0; i < text.length(); i++) {
         if(isupper(text[i])) {
             capital++;
-        } else {
-            continue;
         }
     }
     return capital;
@@ -55,8 +53,6 @@ int countLowerCaseLetters(string text) {
     for (int i = 0; i < text.length(); i++) {
         if(islower(text[i])) {
             lower++;
-        } else {
-            continue;
         }
     }
     return lower;
@@ -71,8 +67,6 @@ int countVowels(string text) {
     for (int i = 0; i < text.length(); i++) {
         if(isVowel(text[i])) {
             vowel++;
-        } else {
-            continue;
         }
     }
     return vowel;
@@ -81,12 +75,8 @@ int countVowels(string text) {
 int countConsonants(string text) {
     int consonant= 0;
     for (int i = 0; i < text.length(); i++) {
-
         if((isalpha(text[i]) && !isVowel(text[i]))) {
-            cout << "this is a consonant " << text[i] << endl;
             consonant++;
-        } else {
-            continue;
         }
     }
     return consonant;
@@ -97,30 +87,33 @@ int main(int argc, char *argv[])
 {
 
     /***** CONSTANT SECTION *****/
-    /***** DECLARATION SECTION *****/
-    /***** INITIALIZATION SECTION *****/
-    /***** INTRO SECTION *****/
-    /***** INPUT SECTION *****/
-    /***** PROCESSING SECTION *****/
-    /***** OUTPUT SECTION *****/
+    // no constants needed in this program.
 
+    /***** DECLARATION SECTION *****/
+    string userInput;
+
+    /***** INITIALIZATION SECTION *****/
+    // no initialization needed in this program.
+
+    /***** INTRO SECTION *****/
     cout << "Welcome to the character counter program we will count all sorts of strings." << endl;
 
-    string userInput;
+    /***** INPUT SECTION *****/
     cout << "Please enter your string:";
-//    cin.ignore();
     getline(cin, userInput);
 
-    cout << "length of text " << userInput.length() << endl;
+    /***** PROCESSING SECTION *****/
     int capitals = countCapitals(userInput);
     int lowercase = countLowerCaseLetters(userInput);
     int vowels = countVowels(userInput);
     int consonants = countConsonants(userInput);
 
+    /***** OUTPUT SECTION *****/
     cout << "Number of capitals = " << capitals << endl;
     cout << "Number of lowercase = " << lowercase << endl;
     cout << "Number of vowels = " << vowels<< endl;
     cout << "Number of consonants = " << consonants << endl;
+
     return 0;
 }
 
