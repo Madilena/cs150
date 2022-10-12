@@ -89,125 +89,69 @@ int ageInputMenu() {
 }
 
 double successByAgeGroup(int age) {
-    double percent = 0;
-    string ageRange = "";
-    switch (age) {
-    case 1:
-        ageRange = "age <= 17";
-        percent =  71.4;
-        break;
-    case 2:
-        ageRange = "18 <= age <= 20";
-        percent = 60.8;
-        break;
-    case 3:
-        ageRange = "21 <= age <= 24";
-        percent = 54.6;
-        break;
-    case 4:
-        ageRange = "25 <= age && age <= 29";
-        percent = 57.9;
-        break;
-    case 5:
-        ageRange = "30 <= age <= 34";
-        percent = 62.5;
-        break;
-    case 6:
-        ageRange = "35<= age <= 39";
-        percent = 61.7;
-        break;
-    case 7:
-        ageRange = "40 <= age <= 44";
-        percent = 47.1;
-        break;
-    case 8:
-        ageRange = "45 <= age <= 54";
-        percent = 65.9;
-        break;
-    case 9:
-        ageRange = "55 <= age <= 64";
-        percent = 60.7;
-        break;
-    case 10:
-        ageRange = "65 <= age";
-        percent = 33.3;
-        break;
-    default:
-        ageRange = "not valid";
-        percent = 0;
-        break;
-
+    if (age  <= 17) {
+        return 71.4;
+    } else if(18 <= age <= 20) {
+        return 60.8;
+    } else if(21 <= age <= 24) {
+        return 54.6;
+    } else if(25 <= age <= 29) {
+        return 57.9;
+    } else if(30 <= age <= 34) {
+        return 62.5;
+    } else if(35 <= age <= 39) {
+        return 61.7;
+    } else if(40 <= age <= 44) {
+        return 47.1;
+    } else if(45 <= age <= 54) {
+        return 65.9;
+    } else if(55 <= age <=64) {
+        return 60.7;
+    } else if(65<= age) {
+        return 33.3;
     }
-    cout <<"The student success for " << ageRange << " age is " << percent << endl;
-    return percent;
+    return 0;
 }
 
 double successByEthnicity(int eth) {
-    string ethnicity = "";
-    double percent = 0;
     switch(eth) {
+    // american indian/alaskan native
     case 1:
-        ethnicity = "Native American / Native Alaskan";
-        percent = 66.7;
-        break;
+        return 66.7;
+    // asian
     case 2:
-        ethnicity = "Asian";
-        percent = 67.2;
-        break;
+        return 67.2;
+    // black/african american
     case 3:
-        ethnicity = "Black / African American";
-        percent =  39.2;
-        break;
+        return 39.2;
+    // hispanic
     case 4:
-        ethnicity = "Hispanic";
-        percent = 48.5;
-        break;
+        return 48.5;
+    // pacific islander
     case 5:
-        ethnicity = "Pacific Islander";
-        percent = 20.0;
-        break;
+        return 20.0;
+    // 2 or more races
     case 6:
-        ethnicity = "2 or more races";
-        percent = 58.7;
-        break;
+        return 58.7;
+    // white
     case 7:
-        ethnicity = "white";
-        percent = 62.8;
-        break;
+        return 62.8;
+    // unknown
     case 8:
-        ethnicity = "unknown";
-        percent = 53.0;
-        break;
+        return 53.0;
     default:
-        percent =  0;
-        break;
+        return 0;
     }
-    cout << "The student success for " << ethnicity << " ethnicity is " << percent <<endl;
-    return percent;
 }
 
 double successByGender(int gender) {
-    string gen = "";
-    double percent = 0;
-    switch (gender) {
-    case 1:
-        gen = "Male";
-        percent= 58.4;
-        break;
-    case 2:
-        gen = "Female";
-        percent = 70.1;
-        break;
-    case 3:
-        gen = "Unknown";
-        percent = 60.6;
-        break;
-    default:
-        percent =  0;
-        break;
+    if(gender == 1) {
+        return 58.4;
+    } else if(gender == 2) {
+        return 70.1;
+    } else if(gender == 3) {
+        return 60.6;
     }
-    cout << "The student success for " << gen << " gender is " << percent << endl;
-    return percent;
 }
 
 
@@ -229,10 +173,8 @@ int main(int argc, char *argv[])
     cout << "Welcome to the MiraCosta Data Dashboard and the CS Success Dashboard." << endl;
 
     /***** INPUT SECTION *****/
-    // no input needed
 
     /***** PROCESSING SECTION *****/
-    // no processing needed
 
     /***** OUTPUT SECTION *****/
     while (dashChoice != 7) {
@@ -245,7 +187,7 @@ int main(int argc, char *argv[])
             successByGender(genderChoice);
         } else if(dashChoice == 3) {
             ageChoice = ageInputMenu();
-            successByAgeGroup(ageChoice);
+            successByAge(ageChoice);
         } else if(dashChoice == 4) {
             cout << "Age Not Entered" << endl;
         } else if(dashChoice == 5) {
@@ -253,6 +195,5 @@ int main(int argc, char *argv[])
         } else if(dashChoice == 6) {
             cout << "Gender not entered" << endl;
         }
+        return 0;
     }
-    return 0;
-}
