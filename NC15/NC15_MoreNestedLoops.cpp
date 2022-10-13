@@ -37,8 +37,10 @@ int main(int argc, char *argv[])
 
     /***** CONSTANT SECTION *****/
     const int LINES = 6;
-    const int MAX_CHARACTERS = 16;
+    const int MAX_CHARACTERS = 40;
 
+    //lines would be 6. length would be 40
+    // lines would be 3. length would b 
     /***** DECLARATION SECTION *****/
     // no declarations needed
 
@@ -55,18 +57,23 @@ int main(int argc, char *argv[])
     // no processing needed
 
     /***** OUTPUT SECTION *****/
+    string t = "****************************************";
+    string b = "****************";
+    cout << "6 lines length is " << t.length() << endl;
+
+    cout << "3 lines length is " << b.length() << endl;
     for (int l =0; l < LINES; l++) {
         // increase front fun
         // nel by 2 each iteration
-        for (int i = 0; i < MAX_CHARACTERS - ((l-1)*4); i++) {
+        for (int i = 0; i < (MAX_CHARACTERS/2 - ((l)*4)); i++) {
             cout << "/";
         }
 
-        for (int i=0; i < (MAX_CHARACTERS/2)*l   ; i++) {
+        for (int i=0; i < (8)*l; i++) {
             cout << "*";
         }
 
-        for (int i = 0; i < MAX_CHARACTERS - ((l-1)*4); i++) {
+        for (int i = 0; i < (MAX_CHARACTERS/2 - ((l)*4)); i++) {
             cout << "\\";
         }
         cout << endl;
