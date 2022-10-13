@@ -36,8 +36,8 @@ int main(int argc, char *argv[])
 {
 
     /***** CONSTANT SECTION *****/
-    const int LINES = 3;
-    const int MAX_CHARACTERS = 8;
+    const int LINES = 6;
+    const int MAX_CHARACTERS = 16;
 
     /***** DECLARATION SECTION *****/
     // no declarations needed
@@ -58,16 +58,15 @@ int main(int argc, char *argv[])
     for (int l =0; l < LINES; l++) {
         // increase front fun
         // nel by 2 each iteration
-        for (int i = 0; i < MAX_CHARACTERS - (l*4); i++) {
+        for (int i = 0; i < MAX_CHARACTERS - ((l-1)*4); i++) {
             cout << "/";
         }
 
-        // decrease 4 character per lin
-        for (int i=0; i < (l * 8) ; i++) {
+        for (int i=0; i < (MAX_CHARACTERS/2)*l   ; i++) {
             cout << "*";
         }
 
-        for (int i = 0; i < MAX_CHARACTERS - (l*4); i++) {
+        for (int i = 0; i < MAX_CHARACTERS - ((l-1)*4); i++) {
             cout << "\\";
         }
         cout << endl;
