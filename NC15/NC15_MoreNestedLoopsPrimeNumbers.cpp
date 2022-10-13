@@ -1,5 +1,3 @@
-
-
 /****************************************************
  * AUTHOR: Madilena Mendiola
  * COURSE: CS 150: C++ Programming 1
@@ -9,7 +7,7 @@
  *****************************************************/
 
 /******************************************************
- * Funnel
+ * More Nested Loops Prime Numbers 
  *
  * ****************************************************
  * PROGRAM DESCRIPTION:
@@ -19,8 +17,8 @@ he Funnel: Write a C++ program that produces the following output, which contain
  *
  * ****************************************************
  * ALGORITHM:
- * use nested loops to create funnel.  outer loop controls the amount of rows.  inner loops determine the characters on each line.
- *
+ * use nested loops. outer loop iterates through number of lines.  inner loops will add designs.  we need 3 inner loops.  2 of the loops will be adding the dashes to the top corners of the square.  one loop is creating the triangle in the middle.
+ * 
  * ****************************************************
  * ALL IMPORTED LIBRARIES NEEDED AND PURPOSE:
  *
@@ -36,11 +34,11 @@ int main(int argc, char *argv[])
 {
 
     /***** CONSTANT SECTION *****/
-    // no constants needed in this program.
+    // no constants needed
 
     /***** DECLARATION SECTION *****/
-    int LINES = 6;
-    int MAX_CHARACTERS = 40;
+    int LINES = 5;
+    int MAX_CHARACTERS = 5;
 
     /***** INITIALIZATION SECTION *****/
     // no initializations needed
@@ -55,26 +53,31 @@ int main(int argc, char *argv[])
     // no processing needed
 
     /***** OUTPUT SECTION *****/
-    cout << "How many lines do you want? ";
-    cin >> LINES;
-
-    if (LINES == 3) {
-        MAX_CHARACTERS = 16;
-    } else if(LINES == 6) {
-        MAX_CHARACTERS = 40;
-    }
-
+    int val;
     for (int l =0; l < LINES; l++) {
-        for (int i = 0; i < (MAX_CHARACTERS/2 - ((l)*4)); i++) {
-            cout << "/";
+        for (int i = 0; i < MAX_CHARACTERS - (l); i++) {
+            cout << "-";
         }
 
-        for (int i=0; i < (8)*l; i++) {
-            cout << "*";
+        for (int i=0; i < (l*2)+1; i++) {
+            if (l==0) {
+                val = 1;
+            } else if (l==1) {
+                val = 3;
+            } else if(l ==2) {
+                val = 5;
+            } else if(l==3) {
+                val = 7;
+            } else if(l==4) {
+                val = 9;
+            } else {
+                break;
+            }
+            cout << val;
         }
 
-        for (int i = 0; i < (MAX_CHARACTERS/2 - ((l)*4)); i++) {
-            cout << "\\";
+        for (int i = 0; i < MAX_CHARACTERS - (l); i++) {
+            cout << "-";
         }
         cout << endl;
     }
