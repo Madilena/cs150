@@ -58,8 +58,8 @@ int getMode (int list[], int arraySize) {
     {
         for(int i=0; i<arraySize; i++)
         {
-            if(list[i]==list[j]){
-                count1++; 
+            if(list[i]==list[j]) {
+                count1++;
             }
         }
         if(count1>count2) {
@@ -98,12 +98,17 @@ int main(int argc, char *argv[])
 
     int arr[] = {0, 5, 10, 15, 20, 5, 22};
     int n = sizeof(arr)/sizeof(arr[0]);
+    cout << "\nbefore sort"<< endl;
+    for (int i =0; i < n; i ++) {
+        cout << arr[i] << " " ;
+    }
     int avg = calcAvg(arr, n);
     int *sortedArray = bubbleSort(n, arr);
 
     int mode = getMode(sortedArray, n);
 
-    for (int i =0; i < n; i ++){
+    cout << "\nafter sort"<< endl;
+    for (int i =0; i < n; i ++) {
         cout << sortedArray[i] << " " ;
     }
     cout << "\nmode: " << mode << endl;
