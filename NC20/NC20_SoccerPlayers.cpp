@@ -12,11 +12,14 @@
  *
  * ****************************************************
  * PROGRAM DESCRIPTION:
- *
+ *Write a program that stores the following data about a soccer player in a structure:  
+ *Player’s Name  
+ *Player’s Jersey Number
+ *Goals Scored by Player  
  *
  * ****************************************************
  * ALGORITHM:
- *
+ * loop through user responses and set values to struct pointers.
  *
  * ****************************************************
  * ALL IMPORTED LIBRARIES NEEDED AND PURPOSE:
@@ -28,6 +31,7 @@
 #include <iostream>
 #include <ctime>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -47,8 +51,11 @@ int main(int argc, char *argv[])
     /***** INPUT SECTION *****/
     /***** PROCESSING SECTION *****/
     /***** OUTPUT SECTION *****/
-    const int team_size = 11;
+    const int team_size = 3;
     player team[team_size];
+    int total_goals = 0;
+    int highest_goal = 0;
+    player highest_scorer;
 
 
     for (int i = 0; i < team_size; i++) {
@@ -57,13 +64,14 @@ int main(int argc, char *argv[])
         player p;
         pplayer = &p;
 
+        string line;
+
         string name_response;
         int num_response;
         int goals_response;
 
         cout << "name?"<< endl;
-        cin.ignore();
-        getline(cin, name_response);
+        cin >> name_response;
 
         cout << "number?"<< endl;
         cin.clear();
@@ -73,13 +81,32 @@ int main(int argc, char *argv[])
         cin.clear();
         cin >> goals_response;
 
+        total_goals += goals_response;
+
         (*pplayer).name = name_response;
         (*pplayer).num = num_response;
         (*pplayer).goals = goals_response;
 
-        //player new_player = new player(name_response, num_response, goals_response);
-        team[i] = *pplayer;
+        if (goals_response > highest_goal) {
+            highest_goal = goals_response;
+            highest_scorer = *pplayer;
+        }
 
+        team[i] = *pplayer;
     }
+
+    cout << "Name " << "Number " << "Goals " << endl;
+
+    for(int i=0; i < team_size; i++) {
+        if (team[i].name == highest_scorer.name){
+            cout << team[i].name << "* "  << team[i].num << " "  <<team[i].goals << endl;
+            continue;
+        }
+        cout << team[i].name << " "  << team[i].num << " "  <<team[i].goals << endl;
+    }
+
+    cout << "Total Goals: " << total_goals << endl;
+    cout << "Leading Scorer: " << highest_scorer.name << " - " << highest_goal;
+
     return 0;
 }
