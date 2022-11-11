@@ -8,62 +8,72 @@
 #include <cassert>
 #include <vector>
 #include <sstream>
+#include <string>
+#include <vector>
+
 using namespace std;
 
-void wordStats(string filePath) {
-    string tmp;
-    string pac_string;
-    std::ifstream pac_file (filePath);
+string wordStats(string filePath) {
+    string tmp = "";
+    string text_string = "" ;
+    std::ifstream text_file (filePath);
 
-    if (pac_file.is_open()) {
-        while (pac_file) {
-            pac_file.get();
-            getline(pac_file, tmp);
-            pac_string += tmp;
+    if (text_file.is_open()) {
+        while (text_file) {
+            getline(text_file, tmp  );
+            text_string += tmp + " " ;
+            cout << "tmp text string" <<  tmp <<endl;
         }
     }
-    pac_file.close();
-
+    text_file.close();
+    cout << "final text string" <<  text_string <<endl;
+    return text_string;
 }
-/* 
-vector<string> stuff(){
- std::string s = "This is a string.";
 
-  std::vector<std::string> array;
-  std::stringstream ss(s);
-  std::string tmp;
-  while(std::getline(ss, tmp, ' '))
-  {
-    array.push_back(tmp);
-  }
+vector<string> split(string str, char delimiter) {
+    vector<string> internal;
+    stringstream ss(str); // Turn the string into a stream.
+    string tok;
 
-  for(auto it = array.begin(); it != array.end(); ++it)
-  {
-    std::cout << (*it) << std:: endl;
-  }
-  return array;
-}*/
-vector<string> split(string str, char delimiter) { 
-  vector<string> internal; 
-  stringstream ss(str); // Turn the string into a stream. 
-  string tok; 
- 
-  while(getline(ss, tok, delimiter)) { 
-    internal.push_back(tok); 
-  } 
- 
-  return internal; 
-} 
-int main(int argc, char **argv) { 
-//  string myCSV = "one two three four"; 
-  string myCSV = "Ben Eric  Eric Marty Kim";
-  vector<string> sep = split(myCSV, ' '); 
- 
-  // If using C++11 (which I recommend) 
-  /* for(string t : sep) 
-   *  cout << t << endl; 
-   */ 
- 
-  for(int i = 0; i < sep.size(); ++i) 
-    cout << sep[i] << endl; 
-} 
+    while(getline(ss, tok, delimiter)) {
+        internal.push_back(tok);
+    }
+
+    return internal;
+}
+int main(int argc, char **argv) {
+//    string myCSV = "Ben Eric  Eric Marty Kim Eric Eric Marty";
+    string myCSV = wordStats("dups.txt");
+    vector<string> sep = split(myCSV, ' ');
+
+    int count=0;
+    string word ;
+    for(int i = 0; i < sep.size(); ++i) {
+        int testCount = 1;
+        string test = sep[i];
+
+        if(test == "") {
+            continue;
+        }
+
+        for(int j =0; j<sep.size(); j++) {
+            if (sep[j]==""){
+                continue;
+            }
+            if (i == j) {
+                continue;
+            }
+            if (test == sep[j] && test != "") {
+                testCount++;
+            }
+        }
+        if (testCount > count) {
+            count = testCount;
+            word = sep[i];
+            cout << "word is: " << word <<endl;
+            cout << "test is: " << test <<endl;
+        }
+    }
+
+    cout << "highest count is: " << count << " for word " << word << endl;
+}

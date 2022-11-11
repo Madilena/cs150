@@ -45,19 +45,20 @@ int main(int argc, char *argv[])
 {
 
     /***** CONSTANT SECTION *****/
+    const int team_size = 11;
+
     /***** DECLARATION SECTION *****/
-    /***** INITIALIZATION SECTION *****/
-    /***** INTRO SECTION *****/
-    /***** INPUT SECTION *****/
-    /***** PROCESSING SECTION *****/
-    /***** OUTPUT SECTION *****/
-    const int team_size = 3;
     player team[team_size];
-    int total_goals = 0;
-    int highest_goal = 0;
     player highest_scorer;
 
+    /***** INITIALIZATION SECTION *****/
+    int total_goals = 0;
+    int highest_goal = 0;
 
+    /***** INTRO SECTION *****/
+    // no intro
+
+    /***** INPUT AND PROCESSING SECTION *****/
     for (int i = 0; i < team_size; i++) {
 
         player *pplayer = nullptr;
@@ -71,7 +72,7 @@ int main(int argc, char *argv[])
         int goals_response;
 
         cout << "name?"<< endl;
-        cin >> name_response;
+        getline(cin, name_response);
 
         cout << "number?"<< endl;
         cin.clear();
@@ -93,16 +94,19 @@ int main(int argc, char *argv[])
         }
 
         team[i] = *pplayer;
+        cin.ignore();
     }
 
-    cout << "Name " << "Number " << "Goals " << endl;
+
+    /***** OUTPUT SECTION *****/
+    cout << "Name \t" << "Number \t" << "Goals \t" << endl;
 
     for(int i=0; i < team_size; i++) {
         if (team[i].name == highest_scorer.name){
-            cout << team[i].name << "* "  << team[i].num << " "  <<team[i].goals << endl;
+            cout << team[i].name << "* \t"  << team[i].num << " \t"  <<team[i].goals << endl;
             continue;
         }
-        cout << team[i].name << " "  << team[i].num << " "  <<team[i].goals << endl;
+        cout << team[i].name << " \t"  << team[i].num << " \t"  <<team[i].goals << endl;
     }
 
     cout << "Total Goals: " << total_goals << endl;
