@@ -4,53 +4,67 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <sstream>
 #include <algorithm>
 #include <map>
+#include <vector>
 #include <cassert>
-
+#include <unordered_map>
+#include <cctype>
 using namespace std;
 
 void wordStats(string filePath) {
-    string tmp;
-    string pac_string;
-    std::ifstream pac_file (filePath);
+    string tmp = "";
+    string text_string = "" ;
+    std::ifstream text_file (filePath);
 
-    if (pac_file.is_open()) {
-        while (pac_file) {
-            pac_file.get();
-            getline(pac_file, tmp);
-            pac_string += tmp;
+    if (text_file.is_open()) {
+        while (text_file) {
+            getline(text_file, tmp  );
+            text_string += tmp + " " ;
         }
     }
-    pac_file.close();
+    text_file.close();
 
-    int numOfLetters= 0;
-    for(int i = 0; i < pac_string.length(); i++) {
-        if (pac_string.at(i) != ' ' && pac_string.at(i) != '.' && pac_string.at(i) != ',') {
-            numOfLetters++;
-        }
+    vector<string> sep;
+    stringstream ss(text_string); // Turn the string into a stream.
+    string tok;
+
+    while(getline(ss, tok, ' ')) {
+        sep.push_back(tok);
     }
 
-    int numOfWords = 1;
-    for (int i = 0; i < pac_string.length(); i++) {
-        if (pac_string.at(i) == ' ') {
-            if(pac_string.at(i-1) != ' ') {
-                numOfWords++;
-            }
+    double count=0;
+    double numOfWords = 0;
+    int uniqueLetters = 0;
+    for(int i = 0; i < sep.size(); ++i) {
+        string test = sep[i];
+        if(test =="") {
+            continue;
         }
+        count += test.length();
+        numOfWords++;
     }
 
+    double avg = count / numOfWords;
     map<char, int> m;
 
-    for (int i = 0; i < pac_string.size(); i++) {
-        m[pac_string.at(i)] = i;
+    for (int i = 0; i < text_string.length(); i++) {
+        if (text_string[i] == ' ' || !isalpha(text_string[i])) {
+            continue;
+        }
+        char upper = toupper(text_string[i]);
+        m.insert(make_pair(upper, 30));
     }
+    uniqueLetters = m.size();
 
-    double avgLength = numOfLetters / numOfWords;
-
-    cout << "Total words    = " << numOfWords << endl;
-    cout << "Average length = " << avgLength << endl;
-    cout << "Unique letters = " << m.size() << endl;
+    if (numOfWords == 0) {
+        cout << "Error, bad input file." << endl;
+    } else {
+        cout << "Total words    = " << numOfWords << endl;
+        cout << "Average length = " << avg << endl;
+        cout << "Unique letters = " << uniqueLetters << endl;
+    }
 }
 
 int main(int argc, char* argv[]) {
