@@ -1,4 +1,3 @@
-
 #include <cstdlib>
 #include <iostream>
 #include <iostream>
@@ -31,12 +30,11 @@ void leetSpeak(string input, string output) {
     m.insert(pair<char,int>('e', '3'));
     m.insert(pair<char,int>('a', '4'));
     m.insert(pair<char,int>('t', '7'));
-//    m.insert(pair<char,int>('s', 'Z'));
 
     ofstream myfile;
     myfile.open (output);
 
-    for(int j=0; j<sep.size(); j++) {
+    for(int j=0; j<sep.size();j++){
         size_t start_pos = 0;
         string from = " " ;
         string to = ") (";
@@ -53,7 +51,7 @@ void leetSpeak(string input, string output) {
                 sep[l][k]='Z';
             }
         }
-        if(sep[l][sep[l].length()-1]=='s') {
+        if(sep[l][sep[l].length()-1]=='s'){
             sep[l][sep[l].length()-1]='Z';
         }
 
@@ -61,32 +59,12 @@ void leetSpeak(string input, string output) {
 
     for(int i = 0; i < sep.size(); i++) {
         string s= sep[i];
-//        if(s[sep.size()-1] =='s') {
-//           s[sep.size()-1] = 'Z';
-        //      }
         replace( s.begin(), s.end(), 'o', m.at('o'));
         replace( s.begin(), s.end(), 'l', m.at('l'));
         replace( s.begin(), s.end(), 'e', m.at('e'));
         replace( s.begin(), s.end(), 'a', m.at('a'));
         replace( s.begin(), s.end(), 't', m.at('t'));
 
-
-        /*       size_t start_pos_1 = 0;
-               string from1 = "s)";
-               string to1= "Z)";
-               while((start_pos_1 = s.find(from1, start_pos_1)) != std::string::npos) {
-                   s.replace(start_pos_1, from1.length(), to1);
-                   start_pos_1 += to1.length(); // Handles case where 'to' is a substring of 'from'
-               }
-
-                       size_t start_pos_1 = 0;
-                       string from1 = "s ";
-                       string to1= "Z ";
-                       while((start_pos_1 = s.find(from1, start_pos_1)) != std::string::npos) {
-                           s.replace(start_pos_1, from1.length(), to1);
-                           start_pos_1 += to1.length(); // Handles case where 'to' is a substring of 'from'
-                       }
-                   */
         if (s != "") {
             s = "(" + s + ")";
         }
