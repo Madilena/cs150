@@ -1,29 +1,63 @@
 #include "Measurement.h"
 using namespace std;
 
+Measurement::Measurement(Measurement &m){
+    feet = &m.feet;
+    inches = &m.inches;
+}
 Measurement::Measurement(){}
         
-Measurement::Measurement(unsigned int feet, unsigned int inches){}
+Measurement::Measurement(unsigned int feet, unsigned int inches){
+    this->feet = feet;
+    this->inches = inches;
+}
         
 unsigned int Measurement::getFeet() const {
-    return 0;
+    return this->feet;
 }
         
 unsigned int Measurement::getInches() const{
-     return 0;   
+     return this->inches;   
 }
         
 bool Measurement::setFeet(unsigned int feet){
-    return false;
+    this->feet = feet;
+    return true;
 }
         
 bool Measurement::setInches(unsigned int inches){
-    return false;
+    if(inches > 12){
+        return false;
+    }
+    this->inches = inches;
+    return true;
 }
         
-void Measurement::operator++(int){}
+void Measurement::operator++(int){
+    bool incrementFeet = false;
+    if(inches == 11){
+        setInches(0);
+        incrementFeet = true;
+    }else{
+        setInches(getInches()+1);
+    }
+    if(incrementFeet){
+        setFeet(getFeet()+1);
+    }
+}
 
-void Measurement::operator--(int){}
+void Measurement::operator--(int){
+    bool decrementFeet = false;
+    if(inches == 0){
+        setInches(11);
+        decrementFeet = true;
+    }else{
+        setInches(getInches()+1);
+    }
+    if(decrementFeet){
+        setFeet(getFeet() - 1);
+    }
+}
         
 Measurement Measurement::operator+(Measurement rhs){
     return *this;
