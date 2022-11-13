@@ -3,7 +3,7 @@ using namespace std;
 
 Measurement::Measurement(Measurement &m) {
     this->feet = m.feet;
-    setInches(inches);
+    setInches(m.inches);
 }
 
 Measurement::Measurement() {}
@@ -63,6 +63,9 @@ void Measurement::operator--(int) {
 }
 
 Measurement Measurement::operator+(Measurement rhs) {
+    setFeet(rhs.feet + getFeet());
+    int in = rhs.inches + getInches();
+    setInches(in);
     return *this;
 }
 
