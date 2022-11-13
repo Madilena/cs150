@@ -23,6 +23,12 @@ int main() {
     cout << "Instantiate m3 = m1 + m2" << endl;
     Measurement dupm1 = m1;
     dupm1+m2;
-    Measurement m3 = m1;
+    Measurement m3 = dupm1;
     cout << "m3: Feet=" << m3.getFeet() << " Inches=" << m3.getInches() << endl;
+
+    cout << "Instantiate m4 = m1 - m2" << endl;
+    Measurement dup1m1 = m1;
+    dup1m1 - m2;
+    Measurement m4 = dup1m1;
+    cout << "m4: Feet=" << m4.getFeet() << " Inches=" << m4.getInches() << endl;
 }

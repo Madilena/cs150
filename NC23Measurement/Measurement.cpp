@@ -63,13 +63,24 @@ void Measurement::operator--(int) {
 }
 
 Measurement Measurement::operator+(Measurement rhs) {
-    setFeet(rhs.feet + getFeet());
-    int in = rhs.inches + getInches();
+    setFeet(getFeet() + rhs.getFeet());
+    int in = getInches() + rhs.getInches();
     setInches(in);
     return *this;
 }
 
 Measurement Measurement::operator-(Measurement rhs) {
+    setFeet(getFeet() - rhs.getFeet());
+
+    if(getInches() < rhs.getInches()){
+        int diff = rhs.getInches() - getInches();
+        int in = 12 - diff; 
+        setInches(in);
+
+        setFeet(getFeet() - 1);
+    }else{
+        setInches(getInches() - rhs.getInches());
+    }
     return *this;
 }
 
