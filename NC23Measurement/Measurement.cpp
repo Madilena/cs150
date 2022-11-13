@@ -2,14 +2,15 @@
 using namespace std;
 
 Measurement::Measurement(Measurement &m) {
-    feet = m.feet;
-    inches = m.inches;
+    this->feet = m.feet;
+    setInches(inches);
 }
+
 Measurement::Measurement() {}
 
 Measurement::Measurement(unsigned int feet, unsigned int inches) {
     this->feet = feet;
-    this->inches = inches;
+    setInches(inches);
 }
 
 unsigned int Measurement::getFeet() const {
@@ -26,10 +27,12 @@ bool Measurement::setFeet(unsigned int feet) {
 }
 
 bool Measurement::setInches(unsigned int inches) {
-    if(inches > 12) {
-        return false;
-    }
-    this->inches = inches;
+    int ft = inches / 12;
+    int rin = inches % 12;
+
+    setFeet(getFeet() + ft);
+    
+    this->inches = rin;
     return true;
 }
 
