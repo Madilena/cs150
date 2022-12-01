@@ -6,13 +6,11 @@ using namespace std;
 
 
 int main() {
-    unsigned int x1 = 1;
-    unsigned int y1 = 2;
 
-    Point p1(x1, y1);
+    Point p1 = Point();
 
-    unsigned int x2 = 1;
-    unsigned int y2 = 2;
+    unsigned int x2 = 4;
+    unsigned int y2 = 4;
 
     Point p2(x2, y2);
     cout << p1 << endl;
@@ -22,6 +20,9 @@ int main() {
     } else {
         cout << "Point objects are not equal" << endl;
     }
+
+    float d = p1.distanceTo(p2);
+    cout << "distance between points p1 and p2: " << d << endl;
 
     return 0;
 }

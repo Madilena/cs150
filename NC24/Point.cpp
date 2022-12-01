@@ -1,4 +1,5 @@
 #include "Point.h"
+#include <cmath>
 #include <iomanip>
 
 //this will only work with C++ 11 and later
@@ -42,4 +43,14 @@ void Point::operator=(const Point &p) {
 bool operator==(Point a, Point b) {
      return ((a.getX() == b.getX()) &&
          (a.getY() == b.getY()));
- }
+}
+
+float Point::distanceTo(const Point &other){
+    int x_diff = other.getX() - m_x;
+    int y_diff = other.getY() - m_y;
+    float x_term = pow(x_diff, 2);
+    float y_term = pow(y_diff, 2);
+    float sum = x_term + y_term;
+    float result = sqrt(sum);
+    return result;
+}
