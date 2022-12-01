@@ -5,44 +5,53 @@
 //this will only work with C++ 11 and later
 Line::Line() :  Line(0, 0, 0, 0) {}
 
-Line::Line(unsigned int m_x, unsigned int m_y) {
-    this->m_x= m_x;
-    this->m_y= m_y;
+Line::Line(Point p1, Point p2) {
+    this->m_x1= p1.getX();
+    this->m_y1= p1.getY();
+    this->m_x2= p2.getX();
+    this->m_y2= p2.getY();
 }
 
-unsigned int Point::getX1() const {
+Line::Line(unsigned int x1, unsigned int y1, unsigned int x2, unsigned int y2) {
+    this->m_x1= x1;
+    this->m_y1= y1;
+    this->m_x2= x2;
+    this->m_y2= y2;
+}
+
+unsigned int Line::getX1() const {
     return m_x1;
 }
 
-unsigned int Point::getY1() const {
+unsigned int Line::getY1() const {
     return m_y1;
 }
 
-unsigned int Point::getX2() const {
+unsigned int Line::getX2() const {
     return m_x2;
 }
 
-unsigned int Point::getY2() const {
+unsigned int Line::getY2() const {
     return m_y2;
 }
 
-bool Point::setX1(unsigned int m_x1) {
+bool Line::setX1(unsigned int m_x1) {
     this->m_x1 = m_x1;
     return true;
 }
 
-bool Point::setY1(unsigned int m_y1) {
+bool Line::setY1(unsigned int m_y1) {
     this->m_y1= m_y1;
     return true;
 }
 
-bool Point::setX2(unsigned int m_x2) {
+bool Line::setX2(unsigned int m_x2) {
     this->m_x2 = m_x2;
     return true;
 }
 
-bool Point::setY2(unsigned int m_y2) {
-    this->m_y2= m_y2
+bool Line::setY2(unsigned int m_y2) {
+    this->m_y2= m_y2;
     return true;
 }
 
@@ -50,7 +59,7 @@ bool Point::setY2(unsigned int m_y2) {
 // this operator<< still needs to be defined, as a non-member
 ostream& operator<<(ostream& out, const Line& l)
 {
-    return out << "Line [(x1=" << l.m_x1 << ",y1=" << l.m_y1 << "),(x2=" << l.m_x2 << ",y2=" << m_y2 << ")]";
+    return out << "Line [(x1=" << l.getX1() << ",y1=" << l.getY1() << "),(x2=" << l.getX2() << ",y2=" << l.getY2() << ")]";
 }
 
 void Line::operator=(const Line &l) {
@@ -65,7 +74,7 @@ bool operator==(Line a, Line b) {
          (a.getY1() == b.getY1()) && (a.getX2() == b.getX2()) && (a.getY2() == b.getY2()));
 }
 
-float length(){
+float Line::length(){
     int x_diff = m_x1 - m_x2;
     int y_diff = m_y1 - m_y2;
     float x_term = pow(x_diff, 2);
