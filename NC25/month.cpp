@@ -37,7 +37,18 @@ void Month::operator++(int) {
     }
 }
 
-string nameFromNumber(int number) {
+void Month::operator--(int) {
+    if(number == 1) {
+        setNumber(12);
+        setName("December");
+    } else {
+        int newNum = getNumber()-1;
+        setNumber(newNum);
+        setName(nameFromNumber(newNum));
+    }
+}
+
+string Month::nameFromNumber(int number) {
     string name;
     switch(number) {
     case 1:
@@ -82,24 +93,16 @@ string nameFromNumber(int number) {
     return name;
 }
 
-void Month::operator--(int) {
-    bool decrementFeet = false;
-    if(inches == 0) {
-        setInches(11);
-        decrementFeet = true;
-    } else {
-        setInches(getInches()+1);
-    }
-    if(decrementFeet) {
-        setFeet(getFeet() - 1);
-    }
-}
-
 ostream& operator<<(ostream& out, const Month& m) {
     return out << "Month [" << m.name << "(" << m.number << ")]";
 }
 
 bool operator==(Month a, Month b) {
     return ((a.name == b.name) && (a.number == b.number));
+}
+
+void Month::operator=(const Month &m) {
+    setName(m.getName());
+    setNumber(m.getNumber());
 }
 
