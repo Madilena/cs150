@@ -21,3 +21,4 @@ Alien* AlienPack::getAliens() {
 int AlienPack::getAlienCount() {
     return count;
 }
+

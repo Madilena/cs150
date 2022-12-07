@@ -13,8 +13,8 @@ class Alien {
     public:
         Alien();
         Alien(int health, string name, int damage);
-        int getHealth();
-        string getName();
+//        int getHealth();
+//        string getName();
         int getDamage();
 };
 

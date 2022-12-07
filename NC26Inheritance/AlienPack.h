@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Alien.h"
+
 using namespace std;
 
 const int MAX_ALIENS = 10;
