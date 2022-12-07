@@ -8,8 +8,6 @@ using namespace std;
 
 class Snake : public Alien {
     private:
-//        int health; //0=dead, 100=full health
- //       string name;
 
     public:
         Snake(int health, string name) : Alien(health, name, 10){};

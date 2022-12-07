@@ -1,19 +1,15 @@
 #ifndef OGRE_H
 #define OGRE_H
 
+#include "Alien.h"
 #include <iostream>
 using namespace std;
 
-class Ogre {
+class Ogre : public Alien {
     private:
-        int health; //0=dead, 100=full health
-        string name;
 
     public:
-        Ogre();
-        Ogre(int health, string name);
-        int getHealth();
-        string getName();
+        Ogre(int health, string name) : Alien(health, name, 50){};
 };
 
 #endif

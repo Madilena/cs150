@@ -2,18 +2,15 @@
 #define MARSHMALLOWMAN_H
 
 #include <iostream>
+#include "Alien.h"
+
 using namespace std;
 
-class MarshmallowMan {
+class MarshmallowMan : public Alien {
     private:
-        int health; //0=dead, 100=full health
-        string name;
 
     public:
-        MarshmallowMan();
-        MarshmallowMan(int health, string name);
-        int getHealth();
-        string getName();
+        MarshmallowMan(int health, string name) : Alien(health, name, 30){};
 };
 
 #endif
