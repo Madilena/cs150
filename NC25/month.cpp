@@ -101,6 +101,10 @@ bool operator==(Month a, Month b) {
     return ((a.name == b.name) && (a.number == b.number));
 }
 
+bool operator!=(Month a, Month b) {
+    return !((a.name == b.name) && (a.number == b.number));
+}
+
 void Month::operator=(const Month &m) {
     setName(m.getName());
     setNumber(m.getNumber());
