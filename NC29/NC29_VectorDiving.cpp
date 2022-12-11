@@ -18,11 +18,22 @@ int main() {
     cin.clear();
     cin >> difficulty;
 
+    while (difficulty < 1.2 || difficulty > 3.8) {
+        cout << "Enter the difficulty of the dive (1.2-3.8): ";
+        cin.clear();
+        cin >> difficulty;
+    }
+
     for (int i = 0 ; i < TOTAL_SCORES; i++) {
         double val = 0;
         cout << "Enter judge " << i + 1 << " score: " ;
         cin.clear();
         cin >> val;
+        while (val < 0 || val > 10) {
+            cout << "Enter judge " << i + 1 << " score: " ;
+            cin.clear();
+            cin >> val;
+        }
         scores.insert(scores.end(), val);
     }
 
